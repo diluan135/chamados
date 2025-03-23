@@ -4,36 +4,39 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Chamado extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'titulo', 'descricao', 'prazo_solucao', 'situacao',
-        'data_criacao', 'data_solucao', 'categoria_id', 'autor_id', 'atendente_id'
+        'titulo',
+        'id_categoria',
+        'descricao',
+        'prazo_solucao',
+        'id_situacao',
+        'data_criacao',
+        'id_autor',
+        'data_solucao',
+        'id_autor_solucao',
     ];
-
-    protected $casts = [
-        'data_criacao' => 'datetime',
-        'data_solucao' => 'datetime',
-        'prazo_solucao' => 'datetime'
-    ];
-
-    // Relações
-    public function categoria(): BelongsTo
+    public function categoria()
     {
-        return $this->belongsTo(Categoria::class);
+        return $this->belongsTo(Categoria::class, 'id_categoria');
     }
 
-    public function autor(): BelongsTo
+    public function situacao()
     {
-        return $this->belongsTo(User::class, 'autor_id');
+        return $this->belongsTo(Situacao::class, 'id_situacao');
     }
 
-    public function atendente(): BelongsTo
+    public function autor()
     {
-        return $this->belongsTo(User::class, 'atendente_id');
+        return $this->belongsTo(User::class, 'id_autor');
+    }
+
+    public function solucionador()
+    {
+        return $this->belongsTo(User::class, 'id_autor_solucao');
     }
 }

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('id_categoria')->references('id')->on('categorias');
-            $table->foreign('id_situacao')->references('id')->on('situacao');
+            $table->foreign('id_situacao')->references('id')->on('situacoes');
             $table->foreign('id_autor')->references('id')->on('users');
             $table->foreign('id_autor_solucao')->references('id')->on('users');
         });
