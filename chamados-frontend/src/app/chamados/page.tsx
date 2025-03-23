@@ -1,5 +1,7 @@
 "use client";
+
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import MeusChamados from "@/components/MeusChamados";
 import ChamadosEncerrados from "@/components/ChamadosEncerrados";
@@ -9,14 +11,19 @@ import Painel from "@/components/Painel";
 export default function ChamadosPage() {
   const [activePage, setActivePage] = useState("meusChamados");
   const [user, setUser] = useState<{ roles: string[] } | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    // Carrega os dados do usuário do localStorage
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    if (typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("user");
+      console.log(storedUser);
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      } else {
+        router.push("/login");
+      }
     }
-  }, []);
+  }, [router]);
 
   const renderContent = () => {
     switch (activePage) {
@@ -32,6 +39,10 @@ export default function ChamadosPage() {
         return null;
     }
   };
+
+  if (!user) {
+    return null; // Evita piscar a tela enquanto redireciona
+  }
 
   return (
     <div>
