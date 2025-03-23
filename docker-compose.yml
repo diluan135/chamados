@@ -1,10 +1,11 @@
+version: '3.8'
 services:
   db:
     image: mysql:8.0
     container_name: chamados_mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root  # Senha do root
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: chamados
       MYSQL_USER: usuario
       MYSQL_PASSWORD: senha
@@ -13,6 +14,34 @@ services:
     volumes:
       - ./chamados.sql:/docker-entrypoint-initdb.d/chamados.sql
       - mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./chamados-backend
+    container_name: chamados_backend
+    restart: always
+    depends_on:
+      - db
+    working_dir: /var/www
+    volumes:
+      - ./chamados-backend:/var/www
+    ports:
+      - "8000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
+
+  frontend:
+    build: ./chamados-frontend
+    container_name: chamados_frontend
+    restart: always
+    depends_on:
+      - backend
+    working_dir: /app
+    volumes:
+      - ./chamados-frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    command: npm run dev
+
 
 volumes:
   mysql_data:
