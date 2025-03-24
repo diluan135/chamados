@@ -93,15 +93,18 @@ export default function MeusChamados() {
         const diffDays = diffTime / (1000 * 3600 * 24);
 
         if (diffDays < 0) {
-            return "bg-red-300"; // prazo expirado
+            return "bg-red-300 hover:bg-red-500"; // prazo expirado
         } else if (diffDays <= 2) {
-            return "bg-orange-300"; // prazo próximo (até 2 dias)
+            return "bg-orange-300 hover:bg-orange-500"; // prazo próximo (até 2 dias)
         } else {
-            return "bg-green-300"; // prazo seguro (3 dias ou mais)
+            return "bg-green-300 hover:bg-green-500"; // prazo seguro (3 dias ou mais)
         }
     };
 
     const handleDeleteChamado = async (chamadoId: number) => {
+        const isConfirmed = window.confirm("Tem certeza que deseja excluir este chamado?");
+        if (!isConfirmed) return;
+
         try {
             await axios.delete(`http://localhost:8000/api/chamados/delete/${chamadoId}`, {
                 withCredentials: true,
@@ -141,7 +144,7 @@ export default function MeusChamados() {
     return (
         <div className="flex h-screen">
             {/* Coluna da esquerda: lista de chamados */}
-            <div className="w-1/2 border-r p-4 overflow-auto">
+            <div className="w-1/4 border-r p-4 overflow-auto">
                 <h2 className="text-2xl font-bold mb-4">Chamados</h2>
                 {chamados.length === 0 ? (
                     <p>Sem chamados</p>
@@ -189,7 +192,7 @@ export default function MeusChamados() {
                         </p>
                         <button
                             onClick={() => handleDeleteChamado(selectedChamado.id)}
-                            className="bg-red-500 text-white p-2 rounded mt-4 block"
+                            className="bg-red-500 hover:bg-red-800 cursor-pointer text-white p-2 rounded mt-4 block"
                         >
                             Excluir Chamado
                         </button>
@@ -212,7 +215,7 @@ export default function MeusChamados() {
                                 </select>
                                 <button
                                     onClick={handleSaveSituacao}
-                                    className="bg-blue-500 text-white p-2 rounded ml-2"
+                                    className="bg-blue-500 hover:bg-blue-800 cursor-pointer text-white p-2 rounded ml-2"
                                 >
                                     Salvar
                                 </button>

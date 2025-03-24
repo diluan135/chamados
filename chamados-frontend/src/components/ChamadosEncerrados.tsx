@@ -93,7 +93,7 @@ export default function ChamadosEncerrados() {
             {chamados.map((ch) => (
               <li
                 key={ch.id}
-                className="p-2 mb-2 cursor-pointer bg-gray-300"
+                className="p-2 mb-2 cursor-pointer bg-gray-300 hover:bg-gray-400 cursor-pointer"
                 onClick={() => setSelectedChamado(ch)}
               >
                 <div className="font-semibold">{ch.titulo}</div>

@@ -45,8 +45,8 @@ export default function ChamadosPage() {
   }
 
   return (
-    <div>
-      <Header user={user} onNavClick={setActivePage} />
+    <div className="bg-gray-100 text-gray-800">
+      <Header user={user} onNavClick={setActivePage}/>
       <div className="p-4">{renderContent()}</div>
     </div>
   );

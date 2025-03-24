@@ -53,7 +53,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="min-h-screen flex flex-col items-center justify-center text-gray-900 bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">Cadastro</h1>
       <form onSubmit={handleRegister} className="w-full max-w-sm">
         {/* Nome */}
@@ -152,7 +152,7 @@ export default function RegisterPage() {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white p-2 rounded w-full"
+          className="bg-blue-500 text-white p-2 rounded w-full hover:bg-blue-600 cursor-pointer"
         >
           Cadastrar
         </button>

@@ -1,8 +1,14 @@
 # Usa a imagem oficial do PHP com Apache
 FROM php:8.2-apache
 
-# Instala extensões necessárias
-RUN docker-php-ext-install pdo pdo_mysql
+# Instala dependências do sistema e extensões do PHP
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    zip \
+    libzip-dev \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install pdo pdo_mysql zip
 
 # Instala o Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -13,11 +19,11 @@ WORKDIR /var/www
 # Copia o código do backend para dentro do container
 COPY . /var/www
 
-# Instala dependências do Laravel
-RUN composer install
-
-# Garante permissões corretas
+# Garante permissões corretas antes de instalar dependências
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
+# Instala dependências do Laravel
+RUN composer install --no-dev --no-interaction --optimize-autoloader
 
 # Expõe a porta 8000
 EXPOSE 8000
