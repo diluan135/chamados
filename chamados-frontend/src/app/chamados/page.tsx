@@ -16,7 +16,6 @@ export default function ChamadosPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user");
-      console.log(storedUser);
       if (storedUser) {
         setUser(JSON.parse(storedUser));
       } else {

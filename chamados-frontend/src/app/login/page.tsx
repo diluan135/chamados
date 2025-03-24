@@ -23,7 +23,6 @@ export default function LoginPage() {
                 { withCredentials: true }
             );
 
-            console.log("Login bem-sucedido:", response.data);
 
             // Extrair os dados retornados
             const { token, user, roles } = response.data;
