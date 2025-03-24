@@ -32,13 +32,12 @@ Certifique-se de ter o **Docker** e o **Docker Compose** instalados em sua máqu
 
 2. Utilize as seguintes configurações para o .env:
 
-  ```bash
-   DB_CONNECTION=mysql
-   DB_HOST=db
-   DB_PORT=3306
-   DB_DATABASE=chamados
-   DB_USERNAME=root
-   DB_PASSWORD=root
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=chamados
+DB_USERNAME=root
+DB_PASSWORD=root
 
 
 3. Para iniciar o ambinete:
