@@ -8,7 +8,7 @@ Este é um sistema de gestão de chamados, desenvolvido utilizando **Laravel 10*
 
 #### 1. Diagrama ER
 
-![Modelo Entidade-Relacionamento](modelo-er.png)
+![Modelo Entidade-Relacionamento](https://imgur.com/0NkDrJd)
 
 ### Tecnologias Utilizadas
 
