@@ -23,7 +23,7 @@ COPY . /var/www
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
 # Instala dependências do Laravel
-RUN composer install --no-dev --no-interaction --optimize-autoloader
+RUN composer install
 
 # Expõe a porta 8000
 EXPOSE 8000
