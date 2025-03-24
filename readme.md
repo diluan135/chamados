@@ -8,8 +8,7 @@ Este é um sistema de gestão de chamados, desenvolvido utilizando **Laravel 10*
 
 #### 1. Diagrama ER
 
-![Modelo Entidade-Relacionamento](https://imgur.com/0NkDrJd)
-<blockquote class="imgur-embed-pub" lang="en" data-id="0NkDrJd"><a href="https://imgur.com/0NkDrJd">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+![Modelo Entidade-Relacionamento](https://i.imgur.com/0NkDrJd.png)
 
 ### Tecnologias Utilizadas
 
@@ -37,12 +36,13 @@ Certifique-se de ter o **Docker** e o **Docker Compose** instalados em sua máqu
 
 2. Utilize as seguintes configurações para o .env:
 
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=chamados
-DB_USERNAME=root
-DB_PASSWORD=root
+  ```bash
+   DB_CONNECTION=mysql
+   DB_HOST=db
+   DB_PORT=3306
+   DB_DATABASE=chamados
+   DB_USERNAME=root
+   DB_PASSWORD=root
 
 3. Para iniciar o ambinete:
 
