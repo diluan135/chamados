@@ -2,11 +2,7 @@
 
 Este é um sistema de gestão de chamados, desenvolvido utilizando **Laravel 10** e **Next.js**, com **Docker** para containerização. O sistema permite o cadastro, listagem, atendimento, e exclusão de chamados, além de exibir métricas e indicadores de desempenho, como o SLA de chamados resolvidos dentro do prazo.
 
-## Requisitos
-
-### Requisitos Obrigatórios
-
-#### 1. Diagrama ER
+#### Diagrama ER
 
 ![Modelo Entidade-Relacionamento](https://i.imgur.com/0NkDrJd.png)
 
@@ -43,6 +39,7 @@ Certifique-se de ter o **Docker** e o **Docker Compose** instalados em sua máqu
    DB_DATABASE=chamados
    DB_USERNAME=root
    DB_PASSWORD=root
+
 
 3. Para iniciar o ambinete:
 
